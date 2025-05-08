@@ -33,3 +33,10 @@ header h1 {
   border-radius: 8px 0 0 8px;
   outline: none;
 }
+
+#results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
