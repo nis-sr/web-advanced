@@ -53,3 +53,21 @@ header h1 {
   gap: 2rem;
   padding: 2rem;
 }
+
+.meal-card {
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.meal-card:hover {
+  transform: translateY(-5px);
+}
+
+.meal-card img {
+  width: 100%;
+  height: auto;
+}
