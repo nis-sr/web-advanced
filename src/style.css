@@ -33,6 +33,19 @@ header h1 {
   border-radius: 8px 0 0 8px;
   outline: none;
 }
+#search-button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: #ff5722;
+}
 
 #results {
   display: grid;
