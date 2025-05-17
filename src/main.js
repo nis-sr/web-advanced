@@ -2,7 +2,15 @@ const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const resultsContainer = document.getElementById("results");
 const sortSelect = document.getElementById("sort-select");
+const categorySelect = document.getElementById("category-select");
+
 let currentMeals = [];
+
+(async () => {
+  const meals = await fetchMealsByAlphabet();
+  showResults(meals.slice(0, 30));
+  loadCategories();
+})();
 
 // het zoeken van recepten
 searchButton.addEventListener("click",()=>{
@@ -54,11 +62,19 @@ document.getElementById("sort-select").addEventListener("change", () => {
   }
 });
 
-(async () => {
-  const meals = await fetchMealsByAlphabet();
-  showResults(meals.slice(0, 30));
-})();
-
+// filter categorie
+function loadCategories() {
+  fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+    .then((res) => res.json())
+    .then((data) => {
+      data.meals.forEach((cat) => {
+        const option = document.createElement("option");
+        option.value = cat.strCategory;
+        option.textContent = cat.strCategory;
+        categorySelect.appendChild(option);
+      });
+    });
+}
 
 
 
