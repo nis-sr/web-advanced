@@ -13,6 +13,13 @@ let currentMeals = [];
 
 })();
 
+// enter
+searchInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    searchButton.click();
+  }
+});
+
 // zoekbalk
 searchButton.addEventListener("click",async()=>{
     const query = searchInput.value.trim();
