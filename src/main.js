@@ -10,6 +10,7 @@ let currentMeals = [];
   const meals = await fetchMealsByAlphabet();
   showResults(meals.slice(0, 30));
   loadCategories();
+
 })();
 
 // het zoeken van recepten
@@ -75,6 +76,30 @@ function loadCategories() {
       });
     });
 }
+
+categorySelect.addEventListener("change", async (e) => {
+  const category = e.target.value;
+  if (!category) return;
+
+  try {
+    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    const data = await res.json();
+    
+    const detailedResults = await Promise.all(
+      data.meals.map((meal) =>
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
+          .then((res) => res.json())
+          .then((detail) => detail.meals[0])
+      )
+    );
+
+    showResults(detailedResults);
+  } catch (err) {
+    console.error("Fout bij het filteren op categorie:", err);
+    resultsContainer.innerHTML = "<p>Er ging iets mis bij het filteren.</p>";
+  }
+});
+
 
 
 
