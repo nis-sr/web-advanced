@@ -1,6 +1,9 @@
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const resultsContainer = document.getElementById("results");
+const sortSelect = document.getElementById("sort-select");
+let currentMeals = [];
+
 // het zoeken van recepten
 searchButton.addEventListener("click",()=>{
     const query = searchInput.value.trim();
@@ -24,7 +27,12 @@ searchButton.addEventListener("click",()=>{
 // kaarten maken
 function showResults(meals) {
   resultsContainer.innerHTML = "";
-
+  const sort = sortSelect.value;
+  if (sort === "asc") {
+    meals.sort((a, b) => a.strMeal.localeCompare(b.strMeal));
+  } else if (sort === "desc") {
+    meals.sort((a, b) => b.strMeal.localeCompare(a.strMeal));
+  }
   meals.forEach(meal => {
     const card = document.createElement("div");
     card.className = "meal-card";
@@ -39,6 +47,11 @@ function showResults(meals) {
     resultsContainer.appendChild(card);
   });
 }
+document.getElementById("sort-select").addEventListener("change", () => {
+  if (currentMeals && currentMeals.length > 0) {
+    showResults([...currentMeals]); 
+  }
+});
 
 (async () => {
   const meals = await fetchMealsByAlphabet();
