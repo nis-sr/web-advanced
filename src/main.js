@@ -66,7 +66,7 @@ function showResults(meals) {
   }
   meals.forEach(meal => {
     const card = document.createElement("div");
-    card.className = "meal-card";
+    card.className = "meal-card hidden";
     card.innerHTML = `
       <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
       <div class="meal-info">
@@ -76,6 +76,8 @@ function showResults(meals) {
       </div>
     `;
     resultsContainer.appendChild(card);
+    observer.observe(card);
+
   });
 }
 document.getElementById("sort-select").addEventListener("change", () => {
@@ -120,6 +122,16 @@ categorySelect.addEventListener("change", async (e) => {
     resultsContainer.innerHTML = "<p>Er ging iets mis bij het filteren.</p>";
   }
 });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      entry.target.classList.remove("hidden");
+    }
+  });
+}, { threshold: 0.1 });
+
 
 
 
