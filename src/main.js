@@ -13,14 +13,28 @@ let currentMeals = [];
 
 })();
 
-// het zoeken van recepten
-searchButton.addEventListener("click",()=>{
+// zoekbalk
+searchButton.addEventListener("click",async()=>{
     const query = searchInput.value.trim();
     if(!query){
         alert("Typ een zoekterm in!");
-    }else{
-        console.log("Zoeken naar:", query);  
+        return; 
     }
+    try {
+    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+    const data = await res.json();
+
+    if (!data.meals || data.meals.length === 0) {
+      resultsContainer.innerHTML = "<p>Geen resultaten gevonden.</p>";
+      return;
+    }
+
+    showResults(data.meals);
+  } catch (err) {
+    console.error("Fout bij zoeken:", err);
+    resultsContainer.innerHTML = "<p>Er ging iets mis bij het zoeken.</p>";
+  }
+
  });
 // recepten per letter (api)
  async function fetchMealsByAlphabet() {
@@ -84,7 +98,7 @@ categorySelect.addEventListener("change", async (e) => {
   try {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
     const data = await res.json();
-    
+
     const detailedResults = await Promise.all(
       data.meals.map((meal) =>
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
