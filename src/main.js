@@ -11,6 +11,22 @@ searchButton.addEventListener("click",()=>{
     }
  });
 
+ async function fetchMealsByAlphabet() {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const fetches = alphabet.split('').map(letter =>
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`)
+      .then(res => res.json())
+      .then(data => data.meals || [])
+  );
+  const allMeals = await Promise.all(fetches);
+  return allMeals.flat();
+}
+(async () => {
+  const meals = await fetchMealsByAlphabet();
+  showResults(meals.slice(0, 30));
+})();
+
+
 
 
 
