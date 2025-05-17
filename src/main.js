@@ -27,6 +27,7 @@ searchButton.addEventListener("click",()=>{
 // kaarten maken
 function showResults(meals) {
   resultsContainer.innerHTML = "";
+  currentMeals = meals;
   const sort = sortSelect.value;
   if (sort === "asc") {
     meals.sort((a, b) => a.strMeal.localeCompare(b.strMeal));
