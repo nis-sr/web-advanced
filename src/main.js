@@ -1,7 +1,7 @@
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const resultsContainer = document.getElementById("results");
-
+// het zoeken van recepten
 searchButton.addEventListener("click",()=>{
     const query = searchInput.value.trim();
     if(!query){
@@ -10,7 +10,7 @@ searchButton.addEventListener("click",()=>{
         console.log("Zoeken naar:", query);  
     }
  });
-
+// recepten per letter (api)
  async function fetchMealsByAlphabet() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   const fetches = alphabet.split('').map(letter =>
@@ -21,6 +21,7 @@ searchButton.addEventListener("click",()=>{
   const allMeals = await Promise.all(fetches);
   return allMeals.flat();
 }
+// kaarten maken
 function showResults(meals) {
   resultsContainer.innerHTML = "";
 
@@ -43,6 +44,9 @@ function showResults(meals) {
   const meals = await fetchMealsByAlphabet();
   showResults(meals.slice(0, 30));
 })();
+
+
+
 
 
 
