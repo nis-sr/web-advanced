@@ -9,9 +9,10 @@ body{
 header{
   background-color: #ff7f50;
   color: white;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  position: relative;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 header h1 {
   margin: 0;
