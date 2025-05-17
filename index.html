@@ -8,12 +8,21 @@
     
   </head>
   <body>
-    <header>
-      <h1 id="logo">YumSpot</h1>
+  <header>
+    <h1 id="logo">YumSpot</h1>
       <div id="search-container">
         <input type="text" id="search-input" placeholder="Search for a meal...">
         <button id="search-button">Search</button>
       </div>
+
+      <div class="filters">
+        <select id="sort-select">
+          <option value="">-- Sorteer op --</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+        </select>
+      </div>
+
     </header>
     <main>
       <section id="results"></section> 
