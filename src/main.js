@@ -1,15 +1,18 @@
-const searchInput=document.getElementById("search-input");
-const searchButton=document.getElementById("search-button");
-const resultsContainer=document.getElementById("results");
+window.addEventListener("DOMContentLoaded",()=>{
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+const resultsContainer = document.getElementById("results");
 
 searchButton.addEventListener("click",()=>{
-    const query=searchInput.ariaValueMax.trim();
+    const query = searchInput.value.trim();
     if(!query){
-        alert("typ een zoekterm in!");
+        alert("Typ een zoekterm in!");
     }else{
-        console.log("zoeken naar",query);
-        
+        console.log("Zoeken naar:", query);  
     }
+ });
 });
+
+
 
 
