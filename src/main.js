@@ -21,6 +21,24 @@ searchButton.addEventListener("click",()=>{
   const allMeals = await Promise.all(fetches);
   return allMeals.flat();
 }
+function showResults(meals) {
+  resultsContainer.innerHTML = "";
+
+  meals.forEach(meal => {
+    const card = document.createElement("div");
+    card.className = "meal-card";
+    card.innerHTML = `
+      <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+      <div class="meal-info">
+        <h3>${meal.strMeal}</h3>
+        <p><strong>Categorie:</strong> ${meal.strCategory || 'Onbekend'}</p>
+        <p><strong>Land:</strong> ${meal.strArea || 'Onbekend'}</p>
+      </div>
+    `;
+    resultsContainer.appendChild(card);
+  });
+}
+
 (async () => {
   const meals = await fetchMealsByAlphabet();
   showResults(meals.slice(0, 30));
