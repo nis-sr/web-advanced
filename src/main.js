@@ -1,4 +1,3 @@
-window.addEventListener("DOMContentLoaded",()=>{
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const resultsContainer = document.getElementById("results");
@@ -11,7 +10,7 @@ searchButton.addEventListener("click",()=>{
         console.log("Zoeken naar:", query);  
     }
  });
-});
+
 
 
 
