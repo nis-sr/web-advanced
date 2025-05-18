@@ -14,7 +14,11 @@
         <input type="text" id="search-input" placeholder="Search for a meal...">
         <button id="search-button">Search</button>
       </div>
+
+      <div class="filters-right">
       <button id="show-favorites">Favorieten</button>
+      <button id="back-to-search" class="hidden">Terug </button>
+      </div>
 
       <div class="filters">
         <select id="sort-select">
@@ -24,14 +28,15 @@
         </select>
 
       </div>
-     <select id="category-select">
+
+    <select id="category-select">
       <option value="">-- Filter op categorie --</option>
-     </select>
+    </select>
  
-    </header>
-    <main>
-      <section id="results"></section> 
-    </main>
+  </header>
+  <main>
+   <section id="results"></section> 
+  </main>
 <script type="module" src="src/main.js"></script>
   </body>
 </html>

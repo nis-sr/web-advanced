@@ -72,17 +72,24 @@ function toggleFavorite(id) {
 
 // kaarten maken
 function showResults(meals) {
-  resultsContainer.innerHTML = "";
   currentMeals = meals;
   const sort = sortSelect.value;
+
+  if (!meals || meals.length === 0) {
+    resultsContainer.innerHTML = "<p>Geen resultaten gevonden.</p>";
+    return;
+  }
+
   if (sort === "asc") {
     meals.sort((a, b) => a.strMeal.localeCompare(b.strMeal));
   } else if (sort === "desc") {
     meals.sort((a, b) => b.strMeal.localeCompare(a.strMeal));
   }
+  resultsContainer.innerHTML = "";
+  const favorites = getFavorites(); 
+
   meals.forEach(meal => {
     const card = document.createElement("div");
-    const favorites = getFavorites(); 
     card.className = "meal-card hidden";
     card.innerHTML = `
       <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
@@ -152,42 +159,42 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-resultsContainer.addEventListener("click", async (e) => {
+resultsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("fav-btn")) {
     const id = e.target.getAttribute("data-id");
     toggleFavorite(id);
-
-    const backBtn = document.getElementById("back-to-search");
-    const isInFavoritesView = !backBtn.classList.contains("hidden");
+    const isInFavoritesView = !backToSearchButton.classList.contains("hidden");
+    
     if (isInFavoritesView) {
       const favorites = getFavorites();
       if (favorites.length === 0) {
         resultsContainer.innerHTML = "<p>Je hebt nog geen favorieten opgeslagen.</p>";
-        backBtn.classList.add("hidden");
+        backToSearchButton.classList.add("hidden");
         return;
       }
-
-       const updatedFavorites = await Promise.all(
+       Promise.all(
         favorites.map((id) =>
-          fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then(res => res.json())
+          fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then((res) => res.json())
         )
-      );
+      ).then((results) => {
         const meals = results
           .map((r) => r.meals ? r.meals[0] : null)
           .filter((meal) => meal);
         showResults(meals);
-      
+      });
     } else {
         e.target.textContent = getFavorites().includes(id) ? "❤️" : "🤍";
       }
-      return
+      return;
    }
 });
 document.getElementById("show-favorites").addEventListener("click", () => {
   const favorites = getFavorites();
+  const backBtn = document.getElementById("back-to-search");
 
   if (favorites.length === 0) {
     resultsContainer.innerHTML = "<p>Je hebt nog geen favorieten opgeslagen.</p>";
+    backBtn.classList.add("hidden");
     return;
   }
 
@@ -200,9 +207,8 @@ document.getElementById("show-favorites").addEventListener("click", () => {
     const meals = results
       .map((r) => r.meals ? r.meals[0] : null)
       .filter((meal) => meal !== null);
-
     showResults(meals);
-     document.getElementById("back-to-search").classList.remove("hidden");
+     
   });
 });
 
