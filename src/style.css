@@ -34,11 +34,11 @@ header h1 {
   top: 1.5rem;
   right: 2rem;
   display: flex;
-  gap: 0,5rem;
+  gap: 0.5rem;
 }
 
 #search-input{
-  padding: 0,5rem ;
+  padding: 0.5rem ;
   border-radius: 8px;
   border: none;
 }
@@ -70,6 +70,7 @@ header h1 {
   padding: 0.5rem;
   border-radius: 6px;
   border: none;
+  cursor: pointer;
 }
 
 .filters-right button {
@@ -90,21 +91,39 @@ header h1 {
 
 .meal-card {
   background-color: white;
+  border: 1px solid #eee;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   overflow: hidden;
-  transition: transform 0.2s ease;
+  transition: trnaform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0);
+
+  
 }
 
 .meal-card:hover {
-  transform: translateY(1.03);
+  transform: translateY(-8px) ;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  z-index: 1;
+  cursor: pointer;
 }
 
 .meal-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.meal-card.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.meal-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .meal-info {
@@ -175,24 +194,4 @@ header h1 {
   right: 20px;
   font-size: 1.5rem;
   cursor: pointer;
-}
-.meal-card.hidden {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.meal-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.meal-card.hidden {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.meal-card.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
