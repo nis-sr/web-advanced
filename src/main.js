@@ -54,6 +54,21 @@ searchButton.addEventListener("click",async()=>{
   const allMeals = await Promise.all(fetches);
   return allMeals.flat();
 }
+
+function getFavorites() {
+  return JSON.parse(localStorage.getItem("favorites")) || [];
+}
+
+function toggleFavorite(id) {
+  let favorites = getFavorites();
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(favId => favId !== id);
+  } else {
+    favorites.push(id);
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
 // kaarten maken
 function showResults(meals) {
   resultsContainer.innerHTML = "";
@@ -66,6 +81,7 @@ function showResults(meals) {
   }
   meals.forEach(meal => {
     const card = document.createElement("div");
+    const favorites = getFavorites(); 
     card.className = "meal-card hidden";
     card.innerHTML = `
       <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
@@ -73,6 +89,9 @@ function showResults(meals) {
         <h3>${meal.strMeal}</h3>
         <p><strong>Categorie:</strong> ${meal.strCategory || 'Onbekend'}</p>
         <p><strong>Land:</strong> ${meal.strArea || 'Onbekend'}</p>
+        <button class="fav-btn" data-id="${meal.idMeal}">
+        ${favorites.includes(meal.idMeal) ? "❤️" : "🤍"}
+        </button>
       </div>
     `;
     resultsContainer.appendChild(card);
@@ -131,7 +150,6 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.1 });
-
 
 
 
