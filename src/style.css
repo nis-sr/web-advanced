@@ -20,6 +20,12 @@ header h1 {
   font-size: 5rem;
   letter-spacing: 1.5px;
 }
+#logo {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
 
 #search-container {
   display: flex;

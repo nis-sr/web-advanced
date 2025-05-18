@@ -21,6 +21,13 @@ searchInput.addEventListener("keypress", (e) => {
   }
 });
 
+// LOGO
+logo.addEventListener("click", async () => {
+  const meals = await fetchMealsByAlphabet();
+  showResults(meals.slice(0, 20));
+  backToSearchButton.classList.add("hidden");
+});
+
 // zoekbalk
 searchButton.addEventListener("click",async()=>{
     const query = searchInput.value.trim();
