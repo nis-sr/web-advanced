@@ -7,7 +7,7 @@ const backToSearchButton = document.getElementById("back-to-search");
 
 let currentMeals = [];
 
-(async () => {
+window.addEventListener("DOMContentLoaded",async () => {
   const meals = await fetchMealsByAlphabet();
   showResults(meals.slice(0, 30));
   loadCategories();
@@ -24,11 +24,12 @@ searchInput.addEventListener("keypress", (e) => {
 // zoekbalk
 searchButton.addEventListener("click",async()=>{
     const query = searchInput.value.trim();
-    if(!query){
+    if(query === ""){
         alert("Typ een zoekterm in!");
         return; 
     }
     try {
+    resultsContainer.innerHTML = "<p>Zoeken...</p>";    
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
     const data = await res.json();
 
@@ -54,20 +55,6 @@ searchButton.addEventListener("click",async()=>{
   );
   const allMeals = await Promise.all(fetches);
   return allMeals.flat();
-}
-
-function getFavorites() {
-  return JSON.parse(localStorage.getItem("favorites")) || [];
-}
-
-function toggleFavorite(id) {
-  let favorites = getFavorites();
-  if (favorites.includes(id)) {
-    favorites = favorites.filter(favId => favId !== id);
-  } else {
-    favorites.push(id);
-  }
-  localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
 // kaarten maken
@@ -107,57 +94,25 @@ function showResults(meals) {
 
   });
 }
-document.getElementById("sort-select").addEventListener("change", () => {
-  if (currentMeals && currentMeals.length > 0) {
+sortSelect.addEventListener("change", () => {
+  if (currentMeals.length > 0) {
     showResults([...currentMeals]); 
   }
 });
 
-// filter categorie
-function loadCategories() {
-  fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
-    .then((res) => res.json())
-    .then((data) => {
-      data.meals.forEach((cat) => {
-        const option = document.createElement("option");
-        option.value = cat.strCategory;
-        option.textContent = cat.strCategory;
-        categorySelect.appendChild(option);
-      });
-    });
+function getFavorites() {
+  return JSON.parse(localStorage.getItem("favorites")) || [];
 }
 
-categorySelect.addEventListener("change", async (e) => {
-  const category = e.target.value;
-  if (!category) return;
-
-  try {
-    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-    const data = await res.json();
-
-    const detailedResults = await Promise.all(
-      data.meals.map((meal) =>
-        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
-          .then((res) => res.json())
-          .then((detail) => detail.meals[0])
-      )
-    );
-
-    showResults(detailedResults);
-  } catch (err) {
-    console.error("Fout bij het filteren op categorie:", err);
-    resultsContainer.innerHTML = "<p>Er ging iets mis bij het filteren.</p>";
+function toggleFavorite(id) {
+  let favorites = getFavorites();
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(favId => favId !== id);
+  } else {
+    favorites.push(id);
   }
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      entry.target.classList.remove("hidden");
-    }
-  });
-}, { threshold: 0.1 });
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+}
 
 resultsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("fav-btn")) {
@@ -188,6 +143,7 @@ resultsContainer.addEventListener("click", (e) => {
       return;
    }
 });
+
 document.getElementById("show-favorites").addEventListener("click", () => {
   const favorites = getFavorites();
   const backBtn = document.getElementById("back-to-search");
@@ -197,7 +153,6 @@ document.getElementById("show-favorites").addEventListener("click", () => {
     backBtn.classList.add("hidden");
     return;
   }
-
   Promise.all(
     favorites.map((id) =>
       fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -208,10 +163,63 @@ document.getElementById("show-favorites").addEventListener("click", () => {
       .map((r) => r.meals ? r.meals[0] : null)
       .filter((meal) => meal !== null);
     showResults(meals);
+     backToSearchButton.classList.remove("hidden");
      
   });
 });
 
+categorySelect.addEventListener("change", async (e) => {
+  const category = e.target.value;
+  if (!category) return;
+
+  try {
+    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    const data = await res.json();
+
+    const detailedResults = await Promise.all(
+      data.meals.map((meal) =>
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
+          .then((res) => res.json())
+          .then((detail) => detail.meals[0])
+      )
+    );
+
+    showResults(detailedResults);
+  } catch (err) {
+    console.error("Fout bij het filteren op categorie:", err);
+    resultsContainer.innerHTML = "<p>Er ging iets mis bij het filteren.</p>";
+  }
+});
+
+// filter categorie
+function loadCategories() {
+  fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+    .then((res) => res.json())
+    .then((data) => {
+      data.meals.forEach((cat) => {
+        const option = document.createElement("option");
+        option.value = cat.strCategory;
+        option.textContent = cat.strCategory;
+        categorySelect.appendChild(option);
+      });
+    });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      entry.target.classList.remove("hidden");
+    }
+  });
+}, { threshold: 0.1 });
+
+document.getElementById("back-to-search").addEventListener("click", async () => {
+  const meals = await fetchMealsByAlphabet();
+  showResults(meals.slice(0, 30));
+  loadCategories();
+  document.getElementById("back-to-search").classList.add("hidden");
+});
 
 
 
