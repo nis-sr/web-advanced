@@ -152,31 +152,31 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-resultsContainer.addEventListener("click", (e) => {
+resultsContainer.addEventListener("click", async (e) => {
   if (e.target.classList.contains("fav-btn")) {
     const id = e.target.getAttribute("data-id");
     toggleFavorite(id);
-    const isInFavoritesView = !document.getElementById("back-to-search").classList.contains("hidden");
 
+    const backBtn = document.getElementById("back-to-search");
+    const isInFavoritesView = !backBtn.classList.contains("hidden");
     if (isInFavoritesView) {
       const favorites = getFavorites();
       if (favorites.length === 0) {
         resultsContainer.innerHTML = "<p>Je hebt nog geen favorieten opgeslagen.</p>";
-        backToSearchButton.classList.add("hidden");
+        backBtn.classList.add("hidden");
         return;
       }
 
-      Promise.all(
+       const updatedFavorites = await Promise.all(
         favorites.map((id) =>
-          fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-            .then((res) => res.json())
+          fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then(res => res.json())
         )
-      ).then((results) => {
+      );
         const meals = results
           .map((r) => r.meals ? r.meals[0] : null)
           .filter((meal) => meal);
         showResults(meals);
-      });
+      
     } else {
         e.target.textContent = getFavorites().includes(id) ? "❤️" : "🤍";
       }
@@ -202,6 +202,7 @@ document.getElementById("show-favorites").addEventListener("click", () => {
       .filter((meal) => meal !== null);
 
     showResults(meals);
+     document.getElementById("back-to-search").classList.remove("hidden");
   });
 });
 
