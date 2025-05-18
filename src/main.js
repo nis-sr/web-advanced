@@ -7,12 +7,12 @@ const backToSearchButton = document.getElementById("back-to-search");
 
 let currentMeals = [];
 
-window.addEventListener("DOMContentLoaded",async () => {
+window.addEventListener("DOMContentLoaded", async () => {
   const meals = await fetchMealsByAlphabet();
   showResults(meals.slice(0, 30));
   loadCategories();
 
-})();
+});
 
 // enter
 searchInput.addEventListener("keypress", (e) => {
