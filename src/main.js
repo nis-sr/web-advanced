@@ -78,12 +78,16 @@ function showResults(meals) {
   meals.forEach(meal => {
     const card = document.createElement("div");
     card.className = "meal-card hidden";
+    const instructions = meal.strInstructions ? meal.strInstructions.slice(0, 100) + "..." : "Geen instructies beschikbaar.";
+    const fakeCalories = Math.floor(300 + Math.random() * 400);
     card.innerHTML = `
       <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
       <div class="meal-info">
         <h3>${meal.strMeal}</h3>
         <p><strong>Categorie:</strong> ${meal.strCategory || 'Onbekend'}</p>
         <p><strong>Land:</strong> ${meal.strArea || 'Onbekend'}</p>
+        <p><strong>Kcal (geschat):</strong> ${fakeCalories}</p>
+        <p><strong>Instructies:</strong> ${instructions}</p>
         <button class="fav-btn" data-id="${meal.idMeal}">
         ${favorites.includes(meal.idMeal) ? "❤️" : "🤍"}
         </button>
