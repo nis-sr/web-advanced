@@ -91,14 +91,26 @@ function showResults(meals) {
     `;
     resultsContainer.appendChild(card);
     observer.observe(card);
-
-  });
+ });
 }
+
 sortSelect.addEventListener("change", () => {
   if (currentMeals.length > 0) {
     showResults([...currentMeals]); 
   }
 });
+// popup tonen
+function showModal(meal) {
+  const modal = document.getElementById("meal-modal");
+  const modalDetails = document.getElementById("modal-details");
+  modalDetails.innerHTML = `
+    <h2>${meal.strMeal}</h2>
+    <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+    <p><strong>Categorie:</strong> ${meal.strCategory}</p>
+    <p> ${meal.strInstructions}</p>
+  `;
+  modal.classList.remove("hidden");
+}
 
 function getFavorites() {
   return JSON.parse(localStorage.getItem("favorites")) || [];

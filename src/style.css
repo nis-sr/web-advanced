@@ -115,3 +115,13 @@ header h1 {
   font-size: 0.95rem;
   color: #666;
 }
+
+.fav-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
