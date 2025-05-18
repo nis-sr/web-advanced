@@ -151,7 +151,13 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-
+resultsContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("fav-btn")) {
+    const id = e.target.getAttribute("data-id");
+    toggleFavorite(id);
+    e.target.textContent = getFavorites().includes(id) ? "❤️" : "🤍";
+  }
+});
 
 
 
