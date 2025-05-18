@@ -53,6 +53,30 @@ header h1 {
   background-color: #ff5722;
 }
 
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 3rem;
+  padding: 0 2rem;
+}
+
+.filters-left select {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+}
+
+.filters-right button {
+  background-color: #ffb5a7;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 #results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
