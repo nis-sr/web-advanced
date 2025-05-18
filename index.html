@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YumSpot</title>
     <link rel="stylesheet" href="src/style.css">
-    
+    <script type="module" src="src/main.js"></script>
   </head>
   <body>
   <header>
@@ -14,29 +14,30 @@
         <input type="text" id="search-input" placeholder="Search for a meal...">
         <button id="search-button">Search</button>
       </div>
-
-      <div class="filters-right">
-      <button id="show-favorites">Favorieten</button>
-      <button id="back-to-search" class="hidden">Terug </button>
-      </div>
+      
 
       <div class="filters">
-        <select id="sort-select">
-          <option value="">-- Sorteer op --</option>
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-        </select>
+        <div class="filters-left">
+          <select id="category-select">
+            <option value="">-- Filter op categorie --</option>
+          </select>
+          <select id="sort-select">
+            <option value="">-- Sorteer op --</option>
+            <option value="asc">A-Z</option>
+            <option value="desc">Z-A</option>
+          </select>
+        </div>
+        <div class="filters-right">
+          <button id="show-favorites">Favorieten</button>
+          <button id="back-to-search" class="hidden">Terug </button>
+        </div>
 
       </div>
+      </header>
 
-    <select id="category-select">
-      <option value="">-- Filter op categorie --</option>
-    </select>
- 
-  </header>
-  <main>
-   <section id="results"></section> 
-  </main>
-<script type="module" src="src/main.js"></script>
+      <main>
+        <section id="results"></section> 
+      </main>
+
   </body>
 </html>
