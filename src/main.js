@@ -158,6 +158,27 @@ resultsContainer.addEventListener("click", (e) => {
     e.target.textContent = getFavorites().includes(id) ? "❤️" : "🤍";
   }
 });
+document.getElementById("show-favorites").addEventListener("click", () => {
+  const favorites = getFavorites();
+
+  if (favorites.length === 0) {
+    resultsContainer.innerHTML = "<p>Je hebt nog geen favorieten opgeslagen.</p>";
+    return;
+  }
+
+  Promise.all(
+    favorites.map((id) =>
+      fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+        .then((res) => res.json())
+    )
+  ).then((results) => {
+    const meals = results
+      .map((r) => r.meals ? r.meals[0] : null)
+      .filter((meal) => meal !== null);
+
+    showResults(meals);
+  });
+});
 
 
 
