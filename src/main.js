@@ -32,7 +32,7 @@ logo.addEventListener("click", async () => {
 searchButton.addEventListener("click",async()=>{
     const query = searchInput.value.trim();
     if(query === ""){
-        alert("Typ een zoekterm in!");
+        alert("Please enter a search term!");
         return; 
     }
     try {
@@ -41,14 +41,14 @@ searchButton.addEventListener("click",async()=>{
     const data = await res.json();
 
     if (!data.meals || data.meals.length === 0) {
-      resultsContainer.innerHTML = "<p>Geen resultaten gevonden.</p>";
+      resultsContainer.innerHTML = "<p>No results found.</p>";
       return;
     }
 
     showResults(data.meals);
   } catch (err) {
     console.error("Fout bij zoeken:", err);
-    resultsContainer.innerHTML = "<p>Er ging iets mis bij het zoeken.</p>";
+    resultsContainer.innerHTML = "<p>Something went wrong during the search.</p>";
   }
 
  });
@@ -70,7 +70,7 @@ function showResults(meals) {
   const sort = sortSelect.value;
 
   if (!meals || meals.length === 0) {
-    resultsContainer.innerHTML = "<p>Geen resultaten gevonden.</p>";
+    resultsContainer.innerHTML = "<p>No results found for this category</p>";
     return;
   }
 
@@ -91,10 +91,10 @@ function showResults(meals) {
       <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
       <div class="meal-info">
         <h3>${meal.strMeal}</h3>
-        <p><strong>Categorie:</strong> ${meal.strCategory || 'Onbekend'}</p>
-        <p><strong>Land:</strong> ${meal.strArea || 'Onbekend'}</p>
-        <p><strong>Kcal (geschat):</strong> ${fakeCalories}</p>
-        <p><strong>Instructies:</strong> ${instructions}</p>
+        <p><strong>Category:</strong> ${meal.strCategory || 'Onbekend'}</p>
+        <p><strong>Country:</strong> ${meal.strArea || 'Onbekend'}</p>
+        <p><strong>Kcal(geschat):</strong> ${fakeCalories}</p>
+        <p><strong>Recept:</strong> ${instructions}</p>
         <button class="fav-btn" data-id="${meal.idMeal}">
         ${favorites.includes(meal.idMeal) ? "❤️" : "🤍"}
         </button>
@@ -117,7 +117,7 @@ function showModal(meal) {
   modalDetails.innerHTML = `
     <h2>${meal.strMeal}</h2>
     <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
-    <p><strong>Categorie:</strong> ${meal.strCategory}</p>
+    <p><strong>Category:</strong> ${meal.strCategory}</p>
     <p> ${meal.strInstructions}</p>
   `;
   modal.classList.remove("hidden");
@@ -157,7 +157,7 @@ resultsContainer.addEventListener("click", (e) => {
     if (isInFavoritesView) {
       const favorites = getFavorites();
       if (favorites.length === 0) {
-        resultsContainer.innerHTML = "<p>Je hebt nog geen favorieten opgeslagen.</p>";
+        resultsContainer.innerHTML = "<p>You haven't saved any favorites yet.</p>";
         backToSearchButton.classList.add("hidden");
         return;
       }
@@ -194,7 +194,7 @@ document.getElementById("show-favorites").addEventListener("click", () => {
   const backBtn = document.getElementById("back-to-search");
 
   if (favorites.length === 0) {
-    resultsContainer.innerHTML = "<p>Je hebt nog geen favorieten opgeslagen.</p>";
+    resultsContainer.innerHTML = "<p>You haven't saved any favorites yet.</p>";
     backBtn.classList.add("hidden");
     return;
   }
@@ -232,7 +232,7 @@ categorySelect.addEventListener("change", async (e) => {
     showResults(detailedResults);
   } catch (err) {
     console.error("Fout bij het filteren op categorie:", err);
-    resultsContainer.innerHTML = "<p>Er ging iets mis bij het filteren.</p>";
+    resultsContainer.innerHTML = "<p>Something went wrong while filtering.</p>";
   }
 });
 

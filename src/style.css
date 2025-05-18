@@ -1,25 +1,27 @@
 body{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fffefc;
-  color: #333;
+  font-family: 'Arial' , sans-serif;
+  background-color: #e8b593;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
 header{
-  background-color: #ff7f50;
+  background-color: #ffa07a;
   color: white;
   padding: 2rem;
   position: relative;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 header h1 {
   text-align: center;
+  font-size: 4rem;
   margin: 0;
-  font-size: 5rem;
-  letter-spacing: 1.5px;
+  color: rgb(233, 212, 169);
 }
+
 #logo {
   cursor: pointer;
   user-select: none;
@@ -28,35 +30,31 @@ header h1 {
 }
 
 #search-container {
-  display: flex;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 2rem;
+  display: flex;
   gap: 0,5rem;
-  margin: 1rem; 
 }
 
 #search-input{
-  width: 100%;
   padding: 0,5rem ;
-  font-size: 1rem;
+  border-radius: 8px;
   border: none;
-  border-radius:  8px;
-  
 }
+
 #search-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #ff7f50;
+  background-color: #74c69d;
   color: white;
   border: none;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s ease;
 }
 
 #search-button:hover {
-  background-color: #ff5722;
+  background-color: #52b788;
 }
 
 .filters {
@@ -85,42 +83,41 @@ header h1 {
 
 #results {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
   padding: 2rem;
 }
 
 .meal-card {
   background-color: white;
-  border: 1px solid #eee;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
   transition: transform 0.2s ease;
 }
 
 .meal-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(1.03);
 }
 
 .meal-card img {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
 }
 
 .meal-info {
   padding: 1rem;
+  text-align: center;
+  position: relative;
 }
 
-.meal-info h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+.meal-info h3 {
+  margin: 0.5rem 0.5;
+  font-size: 1rem;
 }
 
-.meal-info p {
-  font-size: 0.95rem;
-  color: #666;
-}
 
 .fav-btn {
   position: absolute;
@@ -178,6 +175,16 @@ header h1 {
   right: 20px;
   font-size: 1.5rem;
   cursor: pointer;
+}
+.meal-card.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.meal-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .meal-card.hidden {
   opacity: 0;
