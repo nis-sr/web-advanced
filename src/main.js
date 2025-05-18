@@ -3,6 +3,7 @@ const searchButton = document.getElementById("search-button");
 const resultsContainer = document.getElementById("results");
 const sortSelect = document.getElementById("sort-select");
 const categorySelect = document.getElementById("category-select");
+const backToSearchButton = document.getElementById("back-to-search");
 
 let currentMeals = [];
 
@@ -155,8 +156,32 @@ resultsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("fav-btn")) {
     const id = e.target.getAttribute("data-id");
     toggleFavorite(id);
-    e.target.textContent = getFavorites().includes(id) ? "❤️" : "🤍";
-  }
+    const isInFavoritesView = !document.getElementById("back-to-search").classList.contains("hidden");
+
+    if (isInFavoritesView) {
+      const favorites = getFavorites();
+      if (favorites.length === 0) {
+        resultsContainer.innerHTML = "<p>Je hebt nog geen favorieten opgeslagen.</p>";
+        backToSearchButton.classList.add("hidden");
+        return;
+      }
+
+      Promise.all(
+        favorites.map((id) =>
+          fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+            .then((res) => res.json())
+        )
+      ).then((results) => {
+        const meals = results
+          .map((r) => r.meals ? r.meals[0] : null)
+          .filter((meal) => meal);
+        showResults(meals);
+      });
+    } else {
+        e.target.textContent = getFavorites().includes(id) ? "❤️" : "🤍";
+      }
+      return
+   }
 });
 document.getElementById("show-favorites").addEventListener("click", () => {
   const favorites = getFavorites();
