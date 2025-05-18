@@ -99,7 +99,7 @@ sortSelect.addEventListener("change", () => {
     showResults([...currentMeals]); 
   }
 });
-// popup tonen
+// functie popup tonen
 function showModal(meal) {
   const modal = document.getElementById("meal-modal");
   const modalDetails = document.getElementById("modal-details");
@@ -111,6 +111,17 @@ function showModal(meal) {
   `;
   modal.classList.remove("hidden");
 }
+
+// popup sluiten
+document.querySelector(".close").addEventListener("click", () => {
+  document.getElementById("meal-modal").classList.add("hidden");
+});
+
+document.getElementById("meal-modal").addEventListener("click", (e) => {
+  if (e.target.id === "meal-modal") {
+    e.target.classList.add("hidden");
+  }
+});
 
 function getFavorites() {
   return JSON.parse(localStorage.getItem("favorites")) || [];
@@ -154,6 +165,17 @@ resultsContainer.addEventListener("click", (e) => {
       }
       return;
    }
+//    wanneer je op een kaart klikt is er die popup
+     const card = e.target.closest(".meal-card");
+  if (card) {
+    const name = card.querySelector("h3").textContent;
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+      .then(res => res.json())
+      .then(data => {
+        showModal(data.meals[0]);
+      });
+  }
+
 });
 
 document.getElementById("show-favorites").addEventListener("click", () => {
