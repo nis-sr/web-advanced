@@ -17,28 +17,37 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 - TheMealDB API
    * Website: https://www.themealdb.com
 ## ⚙️ Implementatie van elke technisch vereiste:
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
+### DOM Manipulatie
+-Elementen selecteren
+-Elementen manipuleren
+-Events aan elementen koppelen
+### Modern JavaScript
+-Gebruik van constanten
+-Template literals
+-Iteratie over arrays
+-Array methodes
+-Arrow functions
+-Ternary operator
+-Callback functions
+-Promises
+-Async & Await
+-Observer API
+### Data & API
+-Fetch om data op te halen
+-JSON manipuleren en weergeven
+### Opslag & Validatie
+-Formulier validatie
+-Gebruik van LocalStorage
+### Styling & Layout
+-Flexbox of CSS Grid
+-Basis CSS
+-Gebruiksvriendelijke elementen (verwijderknoppen, icoontjes,...)
+### Tooling & Structuur
+-Vite Project
+  * Bestand aanwezig: vite.config.js
+  * Bevestiging in package.json
+  * Zoek op:
+    ´ "dev": "vite" `
 
 
 
