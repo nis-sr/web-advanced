@@ -69,3 +69,5 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 - vak web advanced
 - https://www.w3schools.com/js/default.asp
 - https://www.w3schools.com/css/default.asp
+
+## Screenshots ChatGPT-gebruik
