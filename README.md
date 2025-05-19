@@ -58,4 +58,14 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 - Start de dev-server:
   * npm run dev
 - Open je browser op:
-  * http://localhost:5173 
+  * http://localhost:5173
+ 
+## Screenshots applicatie:
+
+
+## Gebruikte bronnen:
+- https://www.youtube.com/watch?v=RkGUWKsE_Ng
+- vak web essentails
+- vak web advanced
+- https://www.w3schools.com/js/default.asp
+- https://www.w3schools.com/css/default.asp
