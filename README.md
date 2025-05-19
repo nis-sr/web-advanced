@@ -63,7 +63,7 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 ## 🖼️ Screenshots applicatie:
 ### Startpagina:
 ![image](https://github.com/user-attachments/assets/35a14935-39db-4973-90a3-f03635901839) 
-### Favorieten
+### Favorieten:
 ![image](https://github.com/user-attachments/assets/927560f3-1d8b-4dde-ad94-323ae9f87375)
 ### Zoekbalk:
 ![image](https://github.com/user-attachments/assets/58f4a61b-8391-4ede-ab56-94024f639aa2)
