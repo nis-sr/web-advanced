@@ -5,7 +5,7 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 - 🍽️ Filteren op categorie
 - 🔃 Sorteren van recepten
 - ❤️ Recepten opslaan via favoriet-knop (hartje)
--- Favorieten worden bewaard in LocalStorage
+  * Favorieten worden bewaard in LocalStorage
 - 🧾 Popup met uitleg bij het klikken op een recept
 - 🔙 Back-knop om terug te keren naar het overzicht
 - ✅ Formulier-validatie (leeg zoeken is niet mogelijk)
