@@ -19,17 +19,17 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 ## ⚙️ Implementatie van elke technisch vereiste(lijnnummer):
 ### DOM Manipulatie
 - Elementen selecteren: 1,2,3,4,5,6,115,116,128,131,192,194,262,266
-- Elementen manipuleren: 103
+- Elementen manipuleren: 39,44,51,73,82,90,103,117,160,197,235
 - Events aan elementen koppelen: 10,18,25,32,108,127,131,151,192,216,262
 ### Modern JavaScript
 - Gebruik van constanten: 1-6,11,26,33,40,41,57,58,63,70,83,86,88,89,115,116,153,155,158,169,180,182,193,194,207,217,221,222,224,245,253,263
 - Template literals:90-102,117-122
-- Iteratie over arrays:85,244,254
-- Array methodes:58,64,78,80,99,143,144165,170,171,175,202,208,209,225
+- Iteratie over arrays:58,85,144,165,170,171,175,202,208,209,225,244,254
+- Array methodes:58,64,78,80,99,143,144,165,170,171,175,202,208,209,225
 - Arrow functions:10,25,108,127,192,262
-- Ternary operator:/
+- Ternary operator:88
 - Callback functions:60,61,166,168,184,185,204,206,227,228,242,243
-- Promises:/
+- Promises:11,26,40,56,58,59,60,61,63,166,168,183,184,185,203,204,206,221,226,227,228,241,242,243,263
 - Async & Await:11,26,40,41,56,63,221,222,224,263
 - Observer API:253
 ### Data & API
