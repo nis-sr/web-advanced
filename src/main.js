@@ -14,14 +14,14 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 });
 
-// enter
+// enter keypress
 searchInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     searchButton.click();
   }
 });
 
-// LOGO
+// klikken op LOGO om terug naar standaardpage te gaan
 logo.addEventListener("click", async () => {
   const meals = await fetchMealsByAlphabet();
   showResults(meals.slice(0, 20));
@@ -64,7 +64,7 @@ searchButton.addEventListener("click",async()=>{
   return allMeals.flat();
 }
 
-// kaarten maken
+// Zoekresultaten weergeven en sorteren op naam
 function showResults(meals) {
   currentMeals = meals;
   const sort = sortSelect.value;
