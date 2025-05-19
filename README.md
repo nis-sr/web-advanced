@@ -16,7 +16,7 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 ## 🌐 Gebruikte API's met links
 - TheMealDB API
    * Website: https://www.themealdb.com
-## ⚙️ Implementatie van elke technisch vereiste:
+## ⚙️ Implementatie van elke technisch vereiste(lijnnummer):
 ### DOM Manipulatie
 - Elementen selecteren: 1,2,3,4,5,6,115,116,128,131,192,194,262,266
 - Elementen manipuleren: 103
