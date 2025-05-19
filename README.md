@@ -13,6 +13,34 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 - 📱 Responsive design (media queries)
 - 🧠 Gemaakt met arrow functions, map, filter, ternary operators, async/await en meer
 - 👀 Gebruik van de Intersection Observer API (voor animaties bij scrollen)
+## 🌐 Gebruikte API's met links
+- TheMealDB API
+   * Website: https://www.themealdb.com
+## ⚙️ Implementatie van elke technisch vereiste:
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+
 
 ## 🚀 Installatie en starten
 - Clone de repo
