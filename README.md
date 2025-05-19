@@ -13,3 +13,12 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 - 📱 Responsive design (media queries)
 - 🧠 Gemaakt met arrow functions, map, filter, ternary operators, async/await en meer
 - 👀 Gebruik van de Intersection Observer API (voor animaties bij scrollen)
+
+## 🚀 Installatie en starten
+- Clone de repo
+- Installeer de dependencies:
+ * npm install
+- Start de dev-server:
+ * npm run dev
+- Open je browser op:
+ * http://localhost:5173 
