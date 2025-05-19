@@ -1,9 +1,15 @@
-# 🧾 Projectbeschrijving
-## Titel: YumSpot
-## Beschrijving:
-YumSpot is een interactieve single-page webapplicatie die gebruikers toelaat om gerechten te ontdekken via de TheMealDB API. Gebruikers kunnen recepten zoeken, filteren op categorie, sorteren op naam, en favoriete gerechten opslaan. De applicatie biedt een intuïtieve gebruikerservaring met een visuele layout en modale pop-ups voor details.
-
-## Doel:
-Een praktische toepassing ontwikkelen met echte API-data die moderne JavaScript-technieken combineert zoals async/await, DOM-manipulatie, localStorage en meer – geschikt als portfolio-project.
-
-
+# 🍽️ YumSpot – Recepten App
+YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web Advanced. De applicatie gebruikt TheMealDB API om recepten op te halen, tonen en gebruikers in staat te stellen maaltijden te zoeken, filteren, sorteren en opslaan als favoriet.
+## 🔧 Features
+- 🔍 Zoeken op naam
+- 🍽️ Filteren op categorie
+- 🔃 Sorteren van recepten
+- ❤️ Recepten opslaan via favoriet-knop (hartje)
+Favorieten worden bewaard in LocalStorage
+- 🧾 Popup met uitleg bij het klikken op een recept
+- 🔙 Back-knop om terug te keren naar het overzicht
+- ✅ Formulier-validatie (leeg zoeken is niet mogelijk)
+- 🖱️ Hover-animaties op receptkaarten
+- 📱 Responsive design (media queries)
+- 🧠 Gemaakt met arrow functions, map, filter, ternary operators, async/await en meer
+- 👀 Gebruik van de Intersection Observer API (voor animaties bij scrollen)
