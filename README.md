@@ -93,6 +93,22 @@ YumSpot is een dynamische single-page webapplicatie ontwikkeld voor het vak Web 
 ### Mooie naam vinden voor site:
 ![image](https://github.com/user-attachments/assets/2430d66d-c736-47d1-a9f0-b4a9533bfa8c)
 ![image](https://github.com/user-attachments/assets/b12f525c-4c64-4632-9c86-45f0135c813d)
+### Localstorage gebruiken bij favorieten:
+![image](https://github.com/user-attachments/assets/d2df1bb9-327d-42c5-8d88-e9f055c458cd)
+### Popup toevoegen aan de kaarten:
+![image](https://github.com/user-attachments/assets/18e9457b-0e00-4610-a8fc-29c66b246e64)
+### Enter gebruik:
+![image](https://github.com/user-attachments/assets/86642631-6032-470c-90a0-d8c53aeb11b7)
+### CSS:
+![image](https://github.com/user-attachments/assets/4a32cc11-aa06-4b98-867a-50c761e49c80)
+### Bericht dat ik eerst iets moet typen voor ik iets search:
+![image](https://github.com/user-attachments/assets/4d00c305-14e6-40b5-9fda-e19b386ca79a)
+### IntersectionObserver gebruik:
+![image](https://github.com/user-attachments/assets/69d59bac-9a39-4b3f-847d-f538cb8c0a00)
+
+
+
+
 
 
 
