@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-    root:'src',
-    server: {
+  base: '/web-advanced/',
+  server: {
     port: 5173
   }
-})
+});
