@@ -275,3 +275,27 @@ header h1 {
     margin-bottom: 20px;
   }
 }
+/* ===== FIX HEADER YUMSPOT DESKTOP ===== */
+
+@media (min-width: 601px) {
+
+  header {
+    position: relative;
+  }
+
+  #logo {
+    position: relative;
+    text-align: center;
+    margin: 0 auto 25px;
+  }
+
+  #search-container {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 35px;
+  }
+
+}
