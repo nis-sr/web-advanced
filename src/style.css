@@ -195,3 +195,83 @@ header h1 {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+/* ===== RESPONSIVE MOBILE YUMSPOT ===== */
+
+@media (max-width: 600px) {
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  header {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 25px 15px;
+  }
+
+  #logo {
+    font-size: 42px;
+    text-align: center;
+  }
+
+  #search-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #search-input {
+    width: 100%;
+    max-width: 280px;
+    box-sizing: border-box;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .filters-left,
+  .filters-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #results {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #results > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  #logo {
+    margin: 0 0 20px;
+    position: static;
+    text-align: center;
+  }
+
+  #search-container {
+    position: static;
+    margin-bottom: 20px;
+  }
+}
